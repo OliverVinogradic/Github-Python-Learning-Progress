@@ -1,0 +1,3 @@
+google.com:200
+fehlerseite.net:500
+bcg.com:404
