@@ -1,0 +1,43 @@
+import subprocess
+
+Home_Lab_Devices = [
+    {"Device": "Gaming PC", "IP Adress": "192.178.23", "Online Status": "True"},
+    {"Device": "Switch", "IP Adress": "192.177.22", "Online Status": "True"},
+    {"Device": "VPS1", "IP Adress": "192.167.22", "Online Status": "True"}
+]
+
+def extract_ip(datalogs):
+    device_list = []
+    ip_list = []  
+    
+    for devices in datalogs:
+        device = devices.get("Device")
+        d_ip = devices.get("IP Adress")
+        
+        ip_list.append(d_ip)
+        device_list.append(device)
+
+   
+    return device_list, ip_list
+
+def device_pinger(ips):
+    ping_results = []  
+    
+    for ip in ips:  
+        is_online = subprocess.call(["ping", "-c", "1", ip], stdout=subprocess.DEVNULL) == 0
+        ping_results.append(is_online)
+        
+    return ping_results  
+
+def main():
+   
+    devices, ips = extract_ip(Home_Lab_Devices)
+    print(f"Found Devices: {devices}")
+    print(f"Found Ips: {ips}")
+    
+    print("\nStart Ping...")
+    ip_results = device_pinger(ips)
+    print(f"Ping-Result (True=Online, False=Offline): {ip_results}")
+
+if __name__ == "__main__":
+    main()
