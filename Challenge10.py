@@ -1,5 +1,3 @@
-
-
 def get_parse_logs(raw_string):
     clean_list = []
    #split into lines

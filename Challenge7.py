@@ -12,7 +12,7 @@ def Transform_data(raw_logs):
           cut = block.split(",")
           Server = cut[0]
           Code = int(cut[1])
-          ip = (cut[2])
+          ip = cut[2]
 
           server_dict = {
             "server_id": Server,
