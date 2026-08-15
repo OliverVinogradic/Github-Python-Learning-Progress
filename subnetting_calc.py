@@ -7,24 +7,37 @@ def u_ip_input():
         ip_octet = u_ip_in.split('.')
 
         if len(ip_octet) != 4:
-         print("IPv4 didint passed the length test try again\n")
+         print("IPv4 didin't pass the length test try again\n")
          continue
 
         try: 
-         int_octest = [int(o) for o in ip_octet]
+         int_octets = [int(o) for o in ip_octet]
         except ValueError:
            print("The IP adress can only contain Int values\n")
            continue
 
-        if all(0 <= o <=255 for o in int_octest):
-           return int_octest
+        if all(0 <= o <=255 for o in int_octets):
+           return int_octets
         else:
-           print("The Int Values in the Octets are either to high or to low..\n")
+           print("The Int Values in the Octets are either too high or to low..\n")
            continue
     
 
     
-                
+def u_cidr_input():
+    while True:
+     try:
+        cidr_input = int(input("Enter your Cidr Number TIP(1-32)\n"))
+        if cidr_input >= 1 and cidr_input <= 32:
+           print("Your Cidr Input is correct\n")
+           return cidr_input
+        else:
+           print("The Int input is either too high or too low...\n")
+     except ValueError:
+        print("Enter Int Values\n")
+        continue
+        
+             
       
 
 
@@ -32,8 +45,10 @@ def u_ip_input():
 
 def main():
  print("lol")
- result = u_ip_input()
- print(result)
+ ip_result = u_ip_input()
+ print(ip_result)
+ cidr_result = u_cidr_input()
+ print(cidr_result)
 
 if __name__  ==  "__main__":
     main()
