@@ -21,6 +21,8 @@ def u_ip_input():
         else:
            print("The Int Values in the Octets are either too high or to low..\n")
            continue
+
+
     
 
     
@@ -36,6 +38,9 @@ def u_cidr_input():
          except ValueError:
             print("Enter Int Values\n")
             continue
+
+
+
         
 def cidr_to_netmask(cidr):
     host_bits = 32 - cidr
@@ -50,14 +55,26 @@ def cidr_to_netmask(cidr):
 
 
 
+def get_network_address(ip_octets, netmask_octets):
+    print()
+       
+     
+
+
+
 def main():
- print("lol")
+ #IP Results
  ip_result = u_ip_input()
  print(ip_result)
+ ##################################
+ #Cidr Results
  cidr_result = u_cidr_input()
  print(f"Cidr Result {cidr_result}")
+ ####################################
+ #Netmask Results
  netmask_result = cidr_to_netmask(cidr_result)
  print(f"Netmask Result {netmask_result}")
+ ####################################
 
 if __name__  ==  "__main__":
     main()
