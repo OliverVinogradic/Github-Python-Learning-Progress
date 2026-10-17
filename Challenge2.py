@@ -1,4 +1,7 @@
-import time
+def analyse_logs(datacluster):
+    for data in datacluster:
+        data = data.split(",")
+        print(data)
 CWebsites = "CostumerWebsites.txt"
 Websites = []
 
