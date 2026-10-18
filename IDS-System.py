@@ -4,6 +4,7 @@ import time
 
 
 def transform_logs(temp_result_list):
+     all_dics = []
 
      for row in temp_result_list:
     
@@ -19,8 +20,8 @@ def transform_logs(temp_result_list):
             "Status Code": s_code
         }
     
-        print(temp_dict)
-        return temp_dict
+        all_dics.append(temp_dict)
+     return all_dics
 
 def extract_logs():
     temp_result_list = []
@@ -33,9 +34,19 @@ def extract_logs():
             data = cleaned_line.split(" - ")
 
             temp_result_list.append(data)
-          
-
+            
     return temp_result_list
+
+
+def analyse_logs(data_dictonary):
+    for data in data_dictonary:
+        status_code = data.get(int("Status Code"))
+        if status_code == 401:
+            print(status_code)
+        else:
+            print("No error")
+
+
         
     
         
@@ -43,6 +54,8 @@ def extract_logs():
 def main():
     low_res = extract_logs()
     mid_res = transform_logs(low_res)
+    print(mid_res)
+    end_res = analyse_logs(mid_res)
 
 
 if __name__ == "__main__":
