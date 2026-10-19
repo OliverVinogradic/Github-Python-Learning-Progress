@@ -41,7 +41,7 @@ def extract_logs():
 def analyse_logs(data_dictonary):
     for data in data_dictonary:
         status_code = int(data.get("Status Code"))
-        if status_code >= 400:
+        if status_code == 401 or status_code == 403:
             intruder_ip = data.get("IP_Adress")
             date = data.get("Date & Time")
             print(f"[!]{intruder_ip} logged in {date} at {status_code}")
