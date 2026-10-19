@@ -40,12 +40,11 @@ def extract_logs():
 
 def analyse_logs(data_dictonary):
     for data in data_dictonary:
-        status_code = data.get(int("Status Code"))
-        if status_code == 401:
-            print(status_code)
-        else:
-            print("No error")
-
+        status_code = int(data.get("Status Code"))
+        if status_code >= 400:
+            intruder_ip = data.get("IP_Adress")
+            date = data.get("Date & Time")
+            print(f"[!]{intruder_ip} logged in {date} at {status_code}")
 
         
     
@@ -54,7 +53,6 @@ def analyse_logs(data_dictonary):
 def main():
     low_res = extract_logs()
     mid_res = transform_logs(low_res)
-    print(mid_res)
     end_res = analyse_logs(mid_res)
 
 
