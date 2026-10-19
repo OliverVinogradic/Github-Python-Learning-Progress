@@ -1,6 +1,6 @@
 import time
 
-
+access_log = "/var/log/httpd/access_log"
 
 
 def transform_logs(temp_result_list):
@@ -25,7 +25,7 @@ def transform_logs(temp_result_list):
 
 def extract_logs():
     temp_result_list = []
-    with open("server_access.log","r") as file:
+    with open(access_log,"r") as file:
         for line in file:
             cleaned_line = line.strip()
 
